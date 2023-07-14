@@ -2,7 +2,6 @@ document.addEventListener("DOMContentLoaded", function() {
   var books = document.querySelectorAll(".book");
   var shelves = document.querySelectorAll(".shelf");
 
-  // Add event listeners to enable dragging and dropping
   books.forEach(function(book) {
     book.addEventListener("dragstart", dragStart);
     book.addEventListener("dragend", dragEnd);
@@ -15,8 +14,8 @@ document.addEventListener("DOMContentLoaded", function() {
     shelf.addEventListener("drop", drop);
   });
 
-  // Functions for dragging and dropping
-  function dragStart() {
+  function dragStart(e) {
+    e.dataTransfer.setData("text/plain", e.target.id);
     this.classList.add("dragging");
   }
 
@@ -37,15 +36,17 @@ document.addEventListener("DOMContentLoaded", function() {
     this.classList.remove("highlight");
   }
 
-  function drop() {
-    var bookId = document.querySelector(".dragging").id;
-    var shelfId = this.id;
-    var bookCallNumber = bookId.split("-")[1];
-    var shelfCallNumber = shelfId.split("-")[1];
+  function drop(e) {
+    e.preventDefault();
+    var bookId = e.dataTransfer.getData("text/plain");
+    var book = document.getElementById(bookId);
+    var shelf = this;
 
-    if (bookCallNumber.startsWith(shelfCallNumber)) {
-      this.appendChild(document.querySelector(".dragging"));
+    if (shelf.contains(book)) {
+      return;
     }
+
+    shelf.appendChild(book);
     this.classList.remove("highlight");
   }
 });
