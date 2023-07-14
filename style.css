@@ -33,23 +33,6 @@ nav ul li a {
   font-weight: bold;
 }
 
-main {
-  padding: 20px;
-}
-
-section {
-  margin-bottom: 40px;
-}
-
-section h2 {
-  margin: 0;
-  font-size: 24px;
-}
-
-h1 {
-  text-align: center;
-}
-
 #game-container {
   max-width: 800px;
   margin: 0 auto;
@@ -86,9 +69,9 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
-  cursor: move;
+  cursor: grab;
 }
 
-.draggable {
-  cursor: move;
+.highlight {
+  background-color: lightgreen;
 }
