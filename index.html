@@ -1,35 +1,36 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Dewey Decimal Shelving Training</title>
+  <title>SardineDude1 GitHub Profile</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-  <h1>Dewey Decimal Shelving Training</h1>
-  
-  <div>
-    <label for="callNumber">Enter Call Number:</label>
-    <input type="text" id="callNumber" />
-    <button onclick="checkCallNumber()">Check</button>
-  </div>
-  
-  <div id="result"></div>
+  <header>
+    <h1>SardineDude1</h1>
+    <nav>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
 
-  <script>
-    function checkCallNumber() {
-      var callNumberInput = document.getElementById('callNumber');
-      var callNumber = callNumberInput.value;
-      
-      // Remove any leading/trailing white spaces
-      callNumber = callNumber.trim();
-      
-      // Validate the call number format
-      var regex = /^[0-9]{3}\.[0-9]{3}$/;
-      var isValid = regex.test(callNumber);
-      
-      // Display the result
-      var resultDiv = document.getElementById('result');
-      resultDiv.innerHTML = isValid ? 'Correct call number format!' : 'Incorrect call number format!';
-    }
-  </script>
+  <main>
+    <section id="about">
+      <h2>About</h2>
+      <!-- Add your about content here -->
+    </section>
+
+    <section id="projects">
+      <h2>Projects</h2>
+      <!-- Add your projects content here -->
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <!-- Add your contact content here -->
+    </section>
+  </main>
 </body>
 </html>
