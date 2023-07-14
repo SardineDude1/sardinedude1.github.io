@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dewey Decimal Shelving Game</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+  <h1>Dewey Decimal Shelving Game</h1>
+  <div id="game-container">
+    <div id="instructions">
+      <h2>Instructions:</h2>
+      <p>Drag and drop the books into the correct shelves based on their Dewey Decimal call numbers.</p>
+    </div>
+    <div id="shelves-container">
+      <div class="shelf" id="shelf-100">100 - Philosophy</div>
+      <div class="shelf" id="shelf-200">200 - Religion</div>
+      <div class="shelf" id="shelf-300">300 - Social Sciences</div>
+      <div class="shelf" id="shelf-400">400 - Language</div>
+      <div class="shelf" id="shelf-500">500 - Science</div>
+    </div>
+    <div id="books-container">
+      <div class="book draggable" id="book-125">Book 1 (125)</div>
+      <div class="book draggable" id="book-275">Book 2 (275)</div>
+      <div class="book draggable" id="book-350">Book 3 (350)</div>
+      <div class="book draggable" id="book-525">Book 4 (525)</div>
+      <div class="book draggable" id="book-425">Book 5 (425)</div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+  var books = document.querySelectorAll(".book");
+  var shelves = document.querySelectorAll(".shelf");
+
+  // Add event listeners to enable dragging and dropping
+  books.forEach(function(book) {
+    book.addEventListener("dragstart", dragStart);
+    book.addEventListener("dragend", dragEnd);
+  });
+
+  shelves.forEach(function(shelf) {
+    shelf.addEventListener("dragover", dragOver);
+    shelf.addEventListener("dragenter", dragEnter);
+    shelf.addEventListener("dragleave", dragLeave);
+    shelf.addEventListener("drop", drop);
+  });
+
+  // Functions for dragging and dropping
+  function dragStart() {
+    this.classList.add("dragging");
+  }
+
+  function dragEnd() {
+    this.classList.remove("dragging");
+  }
+
+  function dragOver(e) {
+    e.preventDefault();
+  }
+
+  function dragEnter(e) {
+    e.preventDefault();
+    this.classList.add("highlight");
+  }
+
+  function dragLeave() {
+    this.classList.remove("highlight");
+  }
+
+  function drop() {
+    var bookId = document.querySelector(".dragging").id;
+    var shelfId = this.id;
+    var bookCallNumber = bookId.split("-")[1];
+    var shelfCallNumber = shelfId.split("-")[1];
+
+    if (bookCallNumber.startsWith(shelfCallNumber)) {
+      this.appendChild(document.querySelector(".dragging"));
+    }
+    this.classList.remove("highlight");
+  }
+});
+
+  </script>
+</body>
+</html>
