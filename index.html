@@ -1,8 +1,35 @@
-
 <!DOCTYPE html>
 <html>
+<head>
+  <title>Dewey Decimal Shelving Training</title>
+</head>
 <body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
+  <h1>Dewey Decimal Shelving Training</h1>
+  
+  <div>
+    <label for="callNumber">Enter Call Number:</label>
+    <input type="text" id="callNumber" />
+    <button onclick="checkCallNumber()">Check</button>
+  </div>
+  
+  <div id="result"></div>
+
+  <script>
+    function checkCallNumber() {
+      var callNumberInput = document.getElementById('callNumber');
+      var callNumber = callNumberInput.value;
+      
+      // Remove any leading/trailing white spaces
+      callNumber = callNumber.trim();
+      
+      // Validate the call number format
+      var regex = /^[0-9]{3}\.[0-9]{3}$/;
+      var isValid = regex.test(callNumber);
+      
+      // Display the result
+      var resultDiv = document.getElementById('result');
+      resultDiv.innerHTML = isValid ? 'Correct call number format!' : 'Incorrect call number format!';
+    }
+  </script>
 </body>
 </html>
