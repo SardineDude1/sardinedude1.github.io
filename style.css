@@ -45,3 +45,50 @@ section h2 {
   margin: 0;
   font-size: 24px;
 }
+
+h1 {
+  text-align: center;
+}
+
+#game-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+#instructions {
+  margin-bottom: 20px;
+}
+
+#shelves-container {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+.shelf {
+  width: 120px;
+  height: 120px;
+  background-color: lightgray;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.book {
+  margin-bottom: 10px;
+  width: 120px;
+  height: 40px;
+  background-color: lightblue;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: move;
+}
+
+.draggable {
+  cursor: move;
+}
